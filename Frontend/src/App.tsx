@@ -1,5 +1,11 @@
+import Login from "@/components/account/Login";
+
 const App = () => {
-  return <div className="p-4 bg-slate-500">xssssaassd</div>;
+  return (
+    <div>
+      <Login />
+    </div>
+  );
 };
 
 export default App;
