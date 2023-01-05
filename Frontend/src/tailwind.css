@@ -4,6 +4,6 @@
 
 @layer base {
   html {
-    @apply w-[400px] h-screen mx-auto;
+    @apply w-[400px] xl:w-[600px] h-screen mx-auto;
   }
 }
