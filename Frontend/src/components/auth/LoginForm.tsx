@@ -55,6 +55,7 @@ const LoginForm = () => {
 
     if (isValid) {
       setIsValidButton(true);
+      setMessage("");
     } else {
       email && password && setMessage(errorMessage as string);
       setIsValidButton(false);
@@ -91,7 +92,7 @@ const LoginForm = () => {
           />
           <InputMessage message={message} />
         </div>
-        <div className="xl:flex xl:gap-6 mt-8">
+        <div className="xl:flex xl:gap-6 mt-6">
           <div className="form-control xl:mt-0 flex-1">
             <button
               type="submit"
@@ -102,15 +103,17 @@ const LoginForm = () => {
               Login
             </button>
           </div>
-          <label className="label justify-center gap-2 flex-1 ">
-            <span className="label-text-alt text-primary ">Not a member?</span>
-            <Link
-              to="/signUp"
-              className="label-text-alt link-info link no-underline hover:underline text-primary-focus text-sm "
+          <div className="flex justify-center items-center gap-2 flex-1 mt-2">
+            <span className="text-primary ">Not a member?</span>
+            <button
+              onClick={(e) => {
+                navigate("/signUp");
+              }}
+              className="link-info link no-underline hover:underline hover:text-secondary-focus text-primary-focus text-lg"
             >
               Signup now
-            </Link>
-          </label>
+            </button>
+          </div>
         </div>
       </form>
     </div>

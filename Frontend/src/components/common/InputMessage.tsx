@@ -1,9 +1,9 @@
-import { HTMLAttributes } from "react";
+import { ComponentProps, HTMLAttributes, memo } from "react";
 
 type InputMessageProps = {
   message: string;
-  className?: HTMLAttributes<"className">;
-};
+  className?: Pick<HTMLAttributes<HTMLDivElement>, "className">;
+} & Omit<ComponentProps<"div">, "children">;
 
 const InputMessage = ({ message, className }: InputMessageProps) => {
   return (
@@ -11,4 +11,4 @@ const InputMessage = ({ message, className }: InputMessageProps) => {
   );
 };
 
-export default InputMessage;
+export default memo(InputMessage);

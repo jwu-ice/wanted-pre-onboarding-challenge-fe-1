@@ -45,8 +45,7 @@ export async function postSignUp({
 
   if (response.ok) {
     const data = await response.json();
-    LocalStore.set(AUTH_TOKEN_KEY, data.token);
-    return { status: true };
+    return { status: true, data: data.message, token: data.token };
   }
 
   const failData = JSON.parse(await response.text()).details;
