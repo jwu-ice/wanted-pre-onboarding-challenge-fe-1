@@ -60,8 +60,6 @@ const SignUpForm = () => {
       password: password.text,
     });
 
-    console.log("status, message, token :>> ", status, message, token);
-
     if (status) {
       setMessage("");
       setEmail((prev) => ({ ...prev, isValid: true }));

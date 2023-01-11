@@ -1,7 +1,6 @@
-import { AUTH_TOKEN_KEY } from "@/constants";
+import { requestConfig } from "@/apis/helpers";
+import { AUTH_TOKEN_KEY, SERVER_URL } from "@/constants";
 import LocalStore from "@/utils/localStore";
-
-const SERVER_URL = "http://localhost:8080";
 
 export async function postLogin({
   email,
@@ -11,11 +10,7 @@ export async function postLogin({
   password: string;
 }) {
   const response = await fetch(`${SERVER_URL}/users/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json;charset=utf-8",
-    },
-    body: JSON.stringify({ email, password }),
+    ...requestConfig({ method: "POST", body: { email, password } }),
   });
 
   if (response.ok) {
@@ -36,11 +31,7 @@ export async function postSignUp({
   password: string;
 }) {
   const response = await fetch(`${SERVER_URL}/users/create`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json;charset=utf-8",
-    },
-    body: JSON.stringify({ email, password }),
+    ...requestConfig({ method: "POST", body: { email, password } }),
   });
 
   if (response.ok) {
