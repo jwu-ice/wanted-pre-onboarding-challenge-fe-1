@@ -1,12 +1,9 @@
-import { AUTH_TOKEN_KEY } from "@/constants";
-import Login from "@/pages/Auth/Login";
-import SignUp from "@/pages/Auth/SignUp";
+import Login from "@/pages/Login";
+import SignUp from "@/pages/SignUp";
 import Navbar from "@/pages/NavBar";
 import NotFound from "@/pages/NotFound";
 import Todo from "@/pages/Todo";
-import LocalStore from "@/utils/localStore";
-import { useEffect } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 const App = () => {
   return (
