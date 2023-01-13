@@ -1,26 +1,38 @@
+import { AUTH_REQUEST_KEY, AUTH_TOKEN_KEY } from "@/constants/env";
+import { ERROR_MESSAGE } from "@/constants/errorMessage";
+import LocalStore from "@/utils/localStore";
+
 type requestConfigProps = {
   method: "GET" | "POST" | "PUT" | "DELETE";
-  body: any;
+  body?: any;
+  headers?: any;
 };
 
-export const requestConfig = ({ method = "GET", body }: requestConfigProps) => {
-  if (!body) {
-    return { method };
+export const requestConfig = ({
+  method = "GET",
+  body,
+  headers,
+}: requestConfigProps) => {
+  if (!body || method === "GET") {
+    return {};
   }
 
-  return {
+  const result = {
     method,
     headers: {
-      "Content-Type": "application/json;charset=utf-8",
+      "Content-type": "application/json",
+      ...headers,
     },
     body: JSON.stringify(body),
   };
+
+  return result;
 };
 
-// middleware
-// const hasToken = LocalStore.get(AUTH_TOKEN_KEY);
+export const getHeaderToken = () => {
+  const authToken = LocalStore.get(AUTH_TOKEN_KEY);
+  if (authToken === null) throw Error(ERROR_MESSAGE.AUTH_NOT_TOKEN);
 
-// if (!hasToken) {
-//   alert("로그인 정보가 없습니다.");
-//   navigate("/auth");
-// }
+  const result = { [AUTH_REQUEST_KEY]: authToken };
+  return result;
+};

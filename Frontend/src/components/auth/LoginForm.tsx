@@ -6,10 +6,11 @@ import {
   useEffect,
 } from "react";
 import InputLabelForm from "@/components/common/InputLabelForm";
-import * as api from "@/apis/auth";
+import * as api from "@/apis/authApi";
 import { Link, useNavigate } from "react-router-dom";
 import InputMessage from "@/components/common/InputMessage";
 import { loginValidator } from "@/utils/validator";
+import { authApi } from "@/apis/authApi";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -33,7 +34,7 @@ const LoginForm = () => {
   const handleSubmitLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const { status, data } = await api.postLogin({
+    const { status, data } = await authApi.postLogin({
       email: email,
       password: password,
     });
@@ -41,6 +42,7 @@ const LoginForm = () => {
     if (status) {
       setMessage(data);
       alert(data);
+      console.log("email :>> ", email);
       navigate("/", { state: { email }, replace: true });
     }
 

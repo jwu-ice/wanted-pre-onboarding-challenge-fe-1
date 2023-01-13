@@ -1,27 +1,44 @@
+import { todoApi } from "@/apis/todoApi";
 import TodoItem from "@/components/TodoList/TodoItem";
-
-const TODOS_EXAMPLE = [
-  {
-    id: "31l",
-    title: "ac",
-    content: "qwrqwr",
-    createdAt: "qwdqwd",
-  },
-  {
-    id: "31klrqsdrjkl",
-    title: "acqwdwqd",
-    content: "qwrqwwqwqwdqwdqdr",
-    createdAt: "qwdqwdqwd",
-  },
-];
+import PlusButton from "@/components/common/PlusButton";
+import { todoType } from "@/types/todo";
+import { useCallback, useEffect, useState } from "react";
 
 const TodoList = () => {
+  const [todos, setTodos] = useState([]);
+
+  const loadTodos = async () => {
+    const { data: loadedTodos } = await todoApi.getTodos();
+    setTodos(loadedTodos);
+  };
+
+  const handleAddTodo = async () => {
+    await todoApi.createTodo({
+      title: "Empty Example",
+      content: "Empty Content",
+    });
+
+    await loadTodos();
+  };
+
+  useEffect(() => {
+    loadTodos();
+  }, []);
+
   return (
-    <>
-      {TODOS_EXAMPLE.map((data) => (
-        <TodoItem key={data.id} data={data} />
-      ))}
-    </>
+    <div className="relative">
+      <div className="absolute right-0 -top-14">
+        <PlusButton onClick={handleAddTodo} />
+      </div>
+
+      <div className="grid grid-cols-1 mt-4 gap-6">
+        {todos?.length ? (
+          todos.map((todo: todoType) => <TodoItem key={todo.id} data={todo} />)
+        ) : (
+          <div>Not Found To Do List</div>
+        )}
+      </div>
+    </div>
   );
 };
 

@@ -7,10 +7,10 @@ import {
   memo,
   useEffect,
 } from "react";
-import * as api from "@/apis/auth";
 import InputMessage from "@/components/common/InputMessage";
 import { useNavigate } from "react-router-dom";
 import { USER_VALIDATION_ERRORS, loginValidator } from "@/utils/validator";
+import { authApi } from "@/apis/authApi";
 
 const SignUpForm = () => {
   const [email, setEmail] = useState({ isValid: true, text: "" });
@@ -55,7 +55,7 @@ const SignUpForm = () => {
       status,
       data: statusMessage,
       token,
-    } = await api.postSignUp({
+    } = await authApi.postSignUp({
       email: email.text,
       password: password.text,
     });
