@@ -11,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import InputMessage from "@/components/common/InputMessage";
 import { loginValidator } from "@/utils/validator";
 import { authApi } from "@/apis/authApi";
+import LocalStore from "@/utils/localStore";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -42,8 +43,8 @@ const LoginForm = () => {
     if (status) {
       setMessage(data);
       alert(data);
-      console.log("email :>> ", email);
-      navigate("/", { state: { email }, replace: true });
+      LocalStore.set("email", email);
+      navigate("/", { replace: true });
     }
 
     setMessage(data);

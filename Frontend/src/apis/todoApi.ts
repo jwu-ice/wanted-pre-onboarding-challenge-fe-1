@@ -1,7 +1,7 @@
 import { getHeaderToken, requestConfig } from "@/apis/helpers";
 import { AUTH_REQUEST_KEY, AUTH_TOKEN_KEY, SERVER_URL } from "@/constants/env";
 import { ERROR_MESSAGE } from "@/constants/errorMessage";
-import { todoType } from "@/types/todo";
+import { TodoType } from "@/types/todo";
 import LocalStore from "@/utils/localStore";
 
 export const todoApi = {
@@ -47,8 +47,8 @@ export const todoApi = {
     title,
     content,
   }: {
-    title: string;
-    content: string;
+    title: string | null;
+    content: string | null;
   }) => {
     const authToken = await LocalStore.get(AUTH_TOKEN_KEY);
 
