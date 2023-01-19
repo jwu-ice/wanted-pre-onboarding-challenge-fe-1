@@ -1,6 +1,6 @@
 import { AUTH_REQUEST_KEY, AUTH_TOKEN_KEY } from "@/constants/env";
 import { ERROR_MESSAGE } from "@/constants/errorMessage";
-import LocalStore from "@/utils/localStore";
+import { LocalStore } from "@/utils/browserStore";
 
 type requestConfigProps = {
   method: "GET" | "POST" | "PUT" | "DELETE";

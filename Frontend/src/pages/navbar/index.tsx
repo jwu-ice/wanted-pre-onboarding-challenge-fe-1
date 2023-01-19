@@ -1,4 +1,4 @@
-import LocalStore from "@/utils/localStore";
+import { LocalStore } from "@/utils/browserStore";
 import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import { useLogout } from "../../hooks/auth/useLogout";

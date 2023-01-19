@@ -11,7 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import InputMessage from "@/components/common/InputMessage";
 import { loginValidator } from "@/utils/validator";
 import { authApi } from "@/apis/authApi";
-import LocalStore from "@/utils/localStore";
+import { LocalStore } from "@/utils/browserStore";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");

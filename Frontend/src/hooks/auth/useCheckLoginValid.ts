@@ -1,5 +1,5 @@
 import { AUTH_TOKEN_KEY } from "@/constants/env";
-import LocalStore from "@/utils/localStore";
+import { LocalStore } from "@/utils/browserStore";
 import { useNavigate } from "react-router-dom";
 
 export const useCheckLoginValid = () => {

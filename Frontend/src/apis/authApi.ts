@@ -1,6 +1,6 @@
 import { requestConfig } from "@/apis/helpers";
 import { AUTH_TOKEN_KEY, SERVER_URL } from "@/constants/env";
-import LocalStore from "@/utils/localStore";
+import { LocalStore } from "@/utils/browserStore";
 
 export const authApi = {
   postLogin: async ({

@@ -2,7 +2,7 @@ import { getHeaderToken, requestConfig } from "@/apis/helpers";
 import { AUTH_REQUEST_KEY, AUTH_TOKEN_KEY, SERVER_URL } from "@/constants/env";
 import { ERROR_MESSAGE } from "@/constants/errorMessage";
 import { TodoType } from "@/types/todo";
-import LocalStore from "@/utils/localStore";
+import { LocalStore } from "@/utils/browserStore";
 
 export const todoApi = {
   getTodos: async () => {
